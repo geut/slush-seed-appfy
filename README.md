@@ -1,4 +1,4 @@
-# seed-appfy [![Build Status](https://secure.travis-ci.org/geut/slush-seed-appfy.png?branch=master)](https://travis-ci.org/geut/slush-seed-appfy) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-seed-appfy.png)](http://badges.enytc.com/for/npm/slush-seed-appfy)
+# seed-appfy
 
 > A slush generator to scaffold a browserify seed app.
 
