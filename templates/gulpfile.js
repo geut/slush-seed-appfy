@@ -3,7 +3,7 @@ var browserSync = require('browser-sync'),
   csso = require('gulp-csso'),
   del = require('del'),
   gulp = require('gulp'),
-  gutil = require('gulp-util')
+  gutil = require('gulp-util'),
   rework = require('gulp-rework'),
   reworkAssets = require('rework-assets')
   reworkNpm = require('rework-npm'),
@@ -40,10 +40,14 @@ var browserSync = require('browser-sync'),
 
 gulp.task('clean', taskClean);
 gulp.task('browserify', taskBrowserify);
+gulp.task('browser-sync', taskBrowserSync);
+gulp.task('copy-vendor', taskCopyVendor);
+gulp.task('watch-files', taskWatchFiles);
+
 gulp.task('dev', taskDev);
 gulp.task('build', taskBuild);
-gulp.task('browser-sync', ['clean', 'dev'], taskBrowserSync);
-gulp.task('serve', ['browser-sync'], taskServe);
+gulp.task('serve', taskServe);
+
 gulp.task('default', ['serve']);
 
 function taskClean(cb) {
@@ -88,16 +92,6 @@ gulp.task('rework-css', function() {
   return stream.pipe(gulp.dest('dist'));
 });
 
-function taskDev() {
-  env = 'dev';
-  runSequence('browserify', 'rework-css');
-}
-
-function taskBuild() {
-  env = 'prod';
-  runSequence('clean', 'browserify', 'rework-css');
-}
-
 function taskBrowserSync() {
   browserSync({
     server: {
@@ -106,8 +100,31 @@ function taskBrowserSync() {
   });
 }
 
-function taskServe() {
-  watch(['index.html', 'src/**/*'], function () {
+function taskCopyVendor() {
+  return gulp.src('src/vendor/**/*')
+  .pipe(gulp.dest('dist/vendor/'));
+}
+
+function taskWatchFiles(cb) {
+  watch(['index.html', 'src/node_modules/**/*', 'src/styles/**/*', 'src/index.css', 'src/index.js'], function () {
     runSequence( 'dev', browserSync.reload );
   });
+
+  watch(['src/vendor/**/*'], function () {
+    runSequence( 'copy-vendor', browserSync.reload );
+  });
+}
+
+function taskDev(cb) {
+  env = 'dev';
+  runSequence('browserify', 'rework-css', cb);
+}
+
+function taskBuild(cb) {
+  env = 'prod';
+  runSequence('clean', 'copy-vendor', 'browserify', 'rework-css', cb);
+}
+
+function taskServe(cb) {
+  runSequence('clean', 'copy-vendor', 'dev', 'browser-sync', 'watch-files', cb);
 }
