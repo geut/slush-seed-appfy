@@ -1,0 +1,35 @@
+{
+  "sourcePath": "src",
+  "entriesCss": "index.css",
+  "entriesJs": "index.js",
+  "bundlePath": "dist",
+  "watchify": false,
+  "browsersync": {
+    "port": 3000,
+    "notify": false
+  },
+  "reworkAssets": {
+    "dest": "assets",
+    "prefix": "assets/"
+  },
+  "dev": {
+    "css": {
+      "sourcemap": true,
+      "minify": false
+    },
+    "js": {
+      "debug": true,
+      "uglify": false
+    }
+  },
+  "prod": {
+    "css": {
+      "sourcemap": false,
+      "minify": true
+    },
+    "js": {
+      "debug": false,
+      "uglify": true
+    }
+  }
+}

@@ -1,4 +1,8 @@
 v1.0.0:
-  date: 2015-0-4
+  date: 2015-01-04
   changes:
     - Initial release.
+v1.0.1:
+  date: 2015-02-15
+  changes:
+    - Refactory gulp tasks.

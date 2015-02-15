@@ -27,6 +27,4 @@ build/Release
 /node_modules/
 
 # Custom ignore folders or files
-*.sublime-project
-*.sublime-workspace
 /dist/
