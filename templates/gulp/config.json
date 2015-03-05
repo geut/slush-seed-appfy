@@ -13,8 +13,8 @@
     "prefix": "assets/"
   },
   "notify" : {
-    "onError": false,
-    "onUpdated": false
+    "onError": true,
+    "onUpdated": true
   },
   "dev": {
     "css": {
