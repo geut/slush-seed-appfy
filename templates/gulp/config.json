@@ -12,6 +12,10 @@
     "dest": "assets",
     "prefix": "assets/"
   },
+  "notify" : {
+    "onError": false,
+    "onUpdated": false
+  },
   "dev": {
     "css": {
       "sourcemap": true,

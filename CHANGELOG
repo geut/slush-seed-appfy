@@ -6,3 +6,7 @@ v1.0.1:
   date: 2015-02-15
   changes:
     - Refactory gulp tasks.
+v1.0.2:
+  date: 2015-03-05
+  changes:
+    - Options to disable the notify function.

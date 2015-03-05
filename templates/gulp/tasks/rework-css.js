@@ -12,11 +12,14 @@ var gulp = require( 'gulp' ),
  * @return {function}       Function task
  */
 module.exports = function ( config ) {
+    var plumberOptions = {};
+    if ( config.notify.onError ) {
+        plumberOptions.errorHandler = notify.onError( "Rework CSS Error: <%= error.message %>" );
+    }
+        
     return function () {
         var stream = gulp.src( config.entriesCss )
-            .pipe( plumber( {
-                errorHandler: notify.onError( "Rework CSS Error: <%= error.message %>" )
-            } ) )
+            .pipe( plumber( plumberOptions ) )
             .pipe(
                 rework(
                     reworkNpm(),
@@ -30,8 +33,12 @@ module.exports = function ( config ) {
             stream.pipe( csso() );
         }
 
-        return stream
-            .pipe( gulp.dest( config.bundlePath ) )
-            .pipe( notify( "Rework CSS Bundle - Updated" ) );
+        stream = stream.pipe( gulp.dest( config.bundlePath ) );
+
+        if ( config.notify.onUpdated ) {
+            return stream.pipe( notify( "Rework CSS Bundle - Updated" ) );
+        }
+
+        return stream;
     };
 };

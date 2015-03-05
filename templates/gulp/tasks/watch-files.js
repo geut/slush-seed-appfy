@@ -10,8 +10,8 @@ var watch = require( 'gulp-watch' ),
  */
 module.exports = function ( config ) {
     var stylesSourceWatch = [ 
-        path.join( config.sourcePath, 'node_modules/**/*.+(css|jpeg|png|eot|svg|ttf|woff|woff2)' ), 
-        path.join( config.sourcePath, 'styles/**/*' )
+        path.join( config.sourcePath, 'node_modules/**/*.css' ), 
+        path.join( config.sourcePath, 'styles/**/*.css' )
     ].concat( config.entriesCss );
 
     return function () {

@@ -6,7 +6,8 @@ var gulp = require( 'gulp' ),
     streamify = require( 'gulp-streamify' ),
     source = require( 'vinyl-source-stream' ),
     path = require( 'path' ),
-    notify = require( 'gulp-notify' );
+    notify = require( 'gulp-notify' ),
+    util = require('gulp-util');
 
 /**
  * Gulp task to run browserify over config.entriesJs
@@ -14,6 +15,14 @@ var gulp = require( 'gulp' ),
  * @return {function}        Function task
  */
 module.exports = function ( config ) {
+    var onBundleError;
+    if ( config.notify.onError ) {
+        onBundleError = notify.onError( "Browserify Error: <%= error.message %>" );
+    } else {
+        onBundleError = function ( err ) {
+            util.log(util.colors.red('Error'), err.message);
+        };
+    }
 
     /**
      * Function to run the Browserify Bundler over pipes
@@ -22,16 +31,20 @@ module.exports = function ( config ) {
      */
     function browserifyBundle( bundler ) {
         var stream = bundler.bundle()
-            .on( "error", notify.onError( "Browserify Error: <%= error.message %>" ) )
+            .on( "error", onBundleError )
             .pipe( source( 'index.js' ) );
 
         if ( config[ config.env ].js.uglify ) {
             stream.pipe( streamify( uglify() ) );
         }
 
-        return stream
-            .pipe( gulp.dest( config.bundlePath ) )
-            .pipe( notify( "Browserify Bundle - Updated" ) );
+        stream = stream.pipe( gulp.dest( config.bundlePath ) );
+
+        if ( config.notify.onUpdated ) {
+            return stream.pipe( notify( "Browserify Bundle - Updated" ) );
+        }
+
+        return stream;
     }
 
     return function () {
