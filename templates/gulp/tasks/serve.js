@@ -8,6 +8,6 @@ var runSequence = require( 'run-sequence' );
 module.exports = function ( config ) {
     return function ( cb ) {
         config.watchify = true;
-        runSequence( 'clean', 'dev', 'browser-sync', 'watch-files', cb );
+        runSequence( 'browser-sync', 'watch-files', cb );
     };
 };

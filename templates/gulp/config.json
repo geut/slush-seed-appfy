@@ -1,39 +1,16 @@
 {
   "sourcePath": "src",
-  "entriesCss": "index.css",
-  "entriesJs": "index.js",
-  "bundlePath": "dist",
+  "destPath": "dist",
+  "assetsPath": "assets",
+  "entryCss": "index.css",
+  "entryJs": "index.js",
   "watchify": false,
   "browsersync": {
     "port": 3000,
     "notify": false
   },
-  "reworkAssets": {
-    "dest": "assets",
-    "prefix": "assets/"
-  },
   "notify" : {
     "onError": true,
     "onUpdated": true
-  },
-  "dev": {
-    "css": {
-      "sourcemap": true,
-      "minify": false
-    },
-    "js": {
-      "debug": true,
-      "uglify": false
-    }
-  },
-  "prod": {
-    "css": {
-      "sourcemap": false,
-      "minify": true
-    },
-    "js": {
-      "debug": false,
-      "uglify": true
-    }
   }
 }

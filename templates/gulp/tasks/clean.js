@@ -5,8 +5,8 @@ var del = require( 'del' );
  * @param  {function} cb Callback
  * @return {function}      Function task
  */
-module.exports = function () {
+module.exports = function ( config ) {
     return function ( cb ) {
-        del( 'dist', cb );
+        del( config.destPath, cb );
     };
 };

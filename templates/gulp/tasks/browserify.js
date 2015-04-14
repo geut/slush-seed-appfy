@@ -7,10 +7,11 @@ var gulp = require( 'gulp' ),
     source = require( 'vinyl-source-stream' ),
     path = require( 'path' ),
     notify = require( 'gulp-notify' ),
-    util = require('gulp-util');
+    util = require('gulp-util'),
+    collapse = require('bundle-collapser/plugin');
 
 /**
- * Gulp task to run browserify over config.entriesJs
+ * Gulp task to run browserify over config.entryJs
  * @param  {object} config Global configuration
  * @return {function}        Function task
  */
@@ -30,15 +31,19 @@ module.exports = function ( config ) {
      * @return {object} stream  Gulp stream
      */
     function browserifyBundle( bundler ) {
+        if ( !(config.debug) ) {
+            bundler.plugin(collapse);
+        }
+
         var stream = bundler.bundle()
             .on( "error", onBundleError )
             .pipe( source( 'index.js' ) );
 
-        if ( config[ config.env ].js.uglify ) {
+        if ( !(config.debug) ) {
             stream.pipe( streamify( uglify() ) );
         }
 
-        stream = stream.pipe( gulp.dest( config.bundlePath ) );
+        stream = stream.pipe( gulp.dest( config.destPath ) );
 
         if ( config.notify.onUpdated ) {
             return stream.pipe( notify( "Browserify Bundle - Updated" ) );
@@ -49,11 +54,8 @@ module.exports = function ( config ) {
 
     return function () {
         var bundler = browserify( {
-            entries: config.entriesJs,
-            debug: config[ config.env ].js.debug,
-            cache: {},
-            packageCache: {},
-            fullPaths: true
+            entries: path.join(config.sourcePath, config.entryJs),
+            debug: config.debug || false
         } );
 
         if ( config.watchify ) {

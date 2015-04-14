@@ -1,4 +1,4 @@
 /**
- * Gulp tasks to work with browserify, reworkcss and others great tools 
+ * Gulp tasks to work with browserify, reworkcss and others great tools
  */
-require('./gulp');
+require('./gulp')(__dirname);

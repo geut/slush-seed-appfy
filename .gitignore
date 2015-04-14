@@ -2,3 +2,5 @@
 temp
 *.log
 .idea
+templates/tests
+templates/node_modules

@@ -7,7 +7,6 @@ var runSequence = require( 'run-sequence' );
  */
 module.exports = function ( config ) {
     return function ( cb ) {
-        config.env = 'prod';
-        runSequence( 'clean', 'browserify', 'rework-css', cb );
+        runSequence( 'clean', 'browserify', 'postcss', cb );
     };
 }

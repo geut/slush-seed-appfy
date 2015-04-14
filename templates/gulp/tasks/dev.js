@@ -7,7 +7,7 @@ var runSequence = require( 'run-sequence' );
  */
 module.exports = function ( config ) {
     return function ( cb ) {
-        config.env = 'dev';
-        runSequence( 'browserify', 'rework-css', cb );
+        config.debug = true;
+        runSequence( 'browserify', 'postcss', cb );
     };
 };
