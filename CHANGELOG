@@ -10,3 +10,9 @@ v1.0.2:
   date: 2015-03-05
   changes:
     - Options to disable the notify function.
+v1.1.0:
+  date: 2015-04-14
+  changes:
+    - Replace rework to use postcss with cssnext.
+    - Refactory tasks.
+    - Added end-to-end testing.

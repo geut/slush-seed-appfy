@@ -8,6 +8,7 @@ var runSequence = require( 'run-sequence' );
 module.exports = function ( config ) {
     return function ( cb ) {
         config.debug = true;
+        config.watchify = true;
         runSequence( 'browserify', 'postcss', cb );
     };
 };

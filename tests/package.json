@@ -1,0 +1,26 @@
+{
+  "name": "test",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "^1.7.0",
+    "browserify": "^8.0.3",
+    "bundle-collapser": "^1.1.4",
+    "cssnext": "^1.2.3",
+    "del": "^1.1.1",
+    "gulp": "^3.8.10",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-postcss": "^5.1.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.0.2",
+    "gulp-util": "^3.0.1",
+    "gulp-watch": "^3.0.0",
+    "mkdirp": "^0.5.0",
+    "run-sequence": "^1.0.2",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.3.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.3"
+  }
+}

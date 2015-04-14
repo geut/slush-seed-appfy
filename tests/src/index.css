@@ -1,0 +1,8 @@
+@import 'batman';
+
+.superman {
+    background: url('images/superman.jpg') no-repeat;
+    background-size: 300px 400px;
+    width: 300px;
+    height: 400px;
+}
