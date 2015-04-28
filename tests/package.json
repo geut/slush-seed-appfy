@@ -5,7 +5,7 @@
     "browser-sync": "^1.7.0",
     "browserify": "^8.0.3",
     "bundle-collapser": "^1.1.4",
-    "cssnext": "^1.2.3",
+    "cssnano": "^1.0.1",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
     "gulp-notify": "^2.2.0",
@@ -16,6 +16,8 @@
     "gulp-util": "^3.0.1",
     "gulp-watch": "^3.0.0",
     "mkdirp": "^0.5.0",
+    "postcss-import": "^5.2.2",
+    "postcss-url": "git://github.com/tinchoz49/postcss-url",
     "run-sequence": "^1.0.2",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.3.0"
