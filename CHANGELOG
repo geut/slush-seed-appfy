@@ -16,3 +16,8 @@ v1.1.0:
     - Replace rework to use postcss with cssnext.
     - Refactory tasks.
     - Added end-to-end testing.
+v1.2.0:
+  date: 2015-05-3
+  changes:
+    - Updated postcss-url, fix sourcemaps in js and css.
+    - Refactory tasks.

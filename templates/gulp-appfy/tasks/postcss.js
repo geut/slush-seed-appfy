@@ -1,13 +1,12 @@
 var gulp = require('gulp'),
-    postcss = require('gulp-postcss'),
     path = require('path'),
     notify = require('gulp-notify'),
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'),
+    sourcemaps = require('gulp-sourcemaps');
 
-/**
- * PostCSS plugins
- */
-var postcssImport = require('postcss-import'),
+// PostCSS and plugins
+var postcss = require('gulp-postcss'),
+    postcssImport = require('postcss-import'),
     postcssUrl = require('postcss-url'),
     nano = require('cssnano');
 
@@ -28,7 +27,7 @@ module.exports = function (config) {
         var processors = [
             postcssImport(),
             postcssUrl({
-                url: 'copy'
+                url: config.debug ? 'rebase' : 'copy'
             }),
             nano()
         ];
@@ -38,8 +37,19 @@ module.exports = function (config) {
             .pipe( postcss(processors, {
                 map: config.debug || false,
                 to: path.join(config.destPath, config.entryCss)
-            }) )
-            .pipe(gulp.dest(config.destPath));
+            }) );
+
+        if ( config.debug ) {
+            stream = stream
+                .pipe(sourcemaps.init({
+                    loadMaps: true
+                }))
+                .pipe(sourcemaps.write('./', {
+                    sourceRoot: '/' + path.basename(config.sourcePath)
+                }));
+        }
+
+        stream = stream.pipe(gulp.dest(config.destPath));
 
         if (config.notify.onUpdated) {
             return stream.pipe(notify("PostCSS Bundle - Updated"));

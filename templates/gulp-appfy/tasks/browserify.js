@@ -8,7 +8,9 @@ var gulp = require( 'gulp' ),
     path = require( 'path' ),
     notify = require( 'gulp-notify' ),
     util = require('gulp-util'),
-    collapse = require('bundle-collapser/plugin');
+    collapse = require('bundle-collapser/plugin'),
+    sourcemaps = require('gulp-sourcemaps'),
+    buffer = require('vinyl-buffer');
 
 /**
  * Gulp task to run browserify over config.entryJs
@@ -39,8 +41,17 @@ module.exports = function ( config ) {
             .on( "error", onBundleError )
             .pipe( source( 'index.js' ) );
 
-        if ( !(config.debug) ) {
-            stream.pipe( streamify( uglify() ) );
+        if ( config.debug ) {
+            // source map external
+            stream = stream.pipe(buffer())
+                .pipe(sourcemaps.init({
+                    loadMaps: true
+                }))
+                .pipe(sourcemaps.write('./', {
+                    sourceRoot: '/'
+                }));
+        } else {
+            stream = stream.pipe( streamify( uglify() ) );
         }
 
         stream = stream.pipe( gulp.dest( config.destPath ) );
