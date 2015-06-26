@@ -16,7 +16,7 @@ module.exports = function ( config ) {
     ];
 
     return function () {
-        watch( path.join(config.basePath, 'index.html'), function () {
+        watch( path.join(config.basePath, config.serverPath, 'index.html'), function () {
             runSequence( 'dev', browserSync.reload );
         } );
 

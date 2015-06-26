@@ -11,7 +11,7 @@ module.exports = function ( config ) {
             port: config.browsersync.port,
             notify: config.browsersync.notify,
             server: {
-                baseDir: './'
+                baseDir: './' + config.serverPath
             }
         } );
     };
