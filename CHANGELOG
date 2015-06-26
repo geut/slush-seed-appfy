@@ -21,3 +21,7 @@ v1.2.0:
   changes:
     - Updated postcss-url, fix sourcemaps in js and css.
     - Refactory tasks.
+v1.2.1:
+  date: 2015-06-26
+  changes:
+    - added new options, serverPath and entryHtml
