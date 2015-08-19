@@ -25,3 +25,7 @@ v1.2.1:
   date: 2015-06-26
   changes:
     - added new options, serverPath and entryHtml
+v1.3.0:
+  date: 2015-08-19
+  changes:
+    - Move all gulp tasks to a new repository called 'gulp-appfy-tasks' to have the tasks updated.

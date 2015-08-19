@@ -1,4 +1,6 @@
 /**
  * Gulp tasks to work with browserify, reworkcss and others great tools
  */
-require('../templates/gulp-appfy')(__dirname);
+var appfy = require('gulp-appfy-tasks');
+appfy.init(__dirname);
+appfy.defineTasks();
