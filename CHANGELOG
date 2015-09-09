@@ -1,31 +1,23 @@
-v1.0.0:
-  date: 2015-01-04
-  changes:
-    - Initial release.
-v1.0.1:
-  date: 2015-02-15
-  changes:
-    - Refactory gulp tasks.
-v1.0.2:
-  date: 2015-03-05
-  changes:
-    - Options to disable the notify function.
-v1.1.0:
-  date: 2015-04-14
-  changes:
-    - Replace rework to use postcss with cssnext.
-    - Refactory tasks.
-    - Added end-to-end testing.
-v1.2.0:
-  date: 2015-05-3
-  changes:
-    - Updated postcss-url, fix sourcemaps in js and css.
-    - Refactory tasks.
-v1.2.1:
-  date: 2015-06-26
-  changes:
-    - added new options, serverPath and entryHtml
-v1.3.0:
-  date: 2015-08-19
-  changes:
-    - Move all gulp tasks to a new repository called 'gulp-appfy-tasks' to have the tasks updated.
+<a name="1.3.0"></a>
+# 1.3.0 (2015-09-09)
+
+
+* added end-to-end tests, updated v1.1.0 ([6b76fb1](https://github.com/geut/slush-seed-appfy/commit/6b76fb1))
+* added new options, serverPath and entryHtml ([1316b16](https://github.com/geut/slush-seed-appfy/commit/1316b16))
+* allow node_modules folder in src ([01c4348](https://github.com/geut/slush-seed-appfy/commit/01c4348))
+* change temporadly postcss/postcss-url to tinchoz49/postcss ([4326cb1](https://github.com/geut/slush-seed-appfy/commit/4326cb1))
+* delete symlink of node_modules in templates ([8532b4a](https://github.com/geut/slush-seed-appfy/commit/8532b4a))
+* gitignore in template ([a082494](https://github.com/geut/slush-seed-appfy/commit/a082494))
+* Initial release ([086b752](https://github.com/geut/slush-seed-appfy/commit/086b752))
+* Initial release ([050aec3](https://github.com/geut/slush-seed-appfy/commit/050aec3))
+* notify activated by default ([51634fd](https://github.com/geut/slush-seed-appfy/commit/51634fd))
+* Options to disable the notify function ([106c91a](https://github.com/geut/slush-seed-appfy/commit/106c91a))
+* refactory gulp ([a80a0fa](https://github.com/geut/slush-seed-appfy/commit/a80a0fa))
+* release v1.2.1 ([11315d4](https://github.com/geut/slush-seed-appfy/commit/11315d4))
+* remove tests ([f208610](https://github.com/geut/slush-seed-appfy/commit/f208610))
+* remove travis ci from README ([867a362](https://github.com/geut/slush-seed-appfy/commit/867a362))
+* replace rework to use postcss with cssnext, refactory tasks and configuration ([6a2000d](https://github.com/geut/slush-seed-appfy/commit/6a2000d))
+* update dependencies ([88af63f](https://github.com/geut/slush-seed-appfy/commit/88af63f))
+* Updated postcss-url, fix sourcemaps in js and css, refactory tasks, v1.2.0 ([fab014d](https://github.com/geut/slush-seed-appfy/commit/fab014d))
+* v1.0.1 refactory gulp tasks ([1b66311](https://github.com/geut/slush-seed-appfy/commit/1b66311))
+* v1.3.0 ([87b8d1b](https://github.com/geut/slush-seed-appfy/commit/87b8d1b))

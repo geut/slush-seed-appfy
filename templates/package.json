@@ -9,7 +9,7 @@
   "main": "index.js",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-appfy-tasks": "git+https://git@github.com/geut/gulp-appfy-tasks.git"
+    "gulp-appfy-tasks": "^1.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
